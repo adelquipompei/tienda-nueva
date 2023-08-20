@@ -92,7 +92,7 @@ let crearCaja = (indumentaria) => {
               
                 
 
-
+console.log(jaja)
 
 
             });
