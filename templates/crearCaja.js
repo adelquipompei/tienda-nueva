@@ -3,11 +3,14 @@
 let tbody = document.createElement('tbody');
 let table = document.querySelector('table')
 let total = document.querySelector('#total');
+let carroVacio = document.querySelector('.icon-tabler-shopping-cart-off')
+let carroLleno = document.querySelector('.icon-tabler-shopping-cart')
 
 
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
+carroLleno.classList.toggle('d-none', carrito.length === 0);
+carroVacio.classList.toggle('d-none', carrito.length > 0);
 if (carrito.length > 0) {
     
     let changuito = document.getElementById('changuito');
@@ -32,7 +35,7 @@ if (carrito.length > 0) {
                     currency: 'ARS'
                 });
 }else{
-    
+
     let sendCarro = document.querySelector('#sendCarro');
         total.textContent = 'Tu carrito está vacío ☹️'
         sendCarro.classList.add('d-none')
@@ -72,10 +75,12 @@ let crearCaja = (indumentaria) => {
         cajaProducto.append(imagenProducto,titulo, precio, addCarrito)
 
 
-      
+     // Agregar al carrito--------------------------------------------------------------- 
         addCarrito.addEventListener('click', () => {
             tablaCarrito.classList.remove('d-none')
             sendCarro.classList.remove('d-none')
+            carroLleno.classList.remove('d-none')
+            carroVacio.classList.add('d-none')
             carrito.push(productos)
             changuito.textContent = carrito.length
             let tableRow = document.createElement('tr')
@@ -101,6 +106,9 @@ let crearCaja = (indumentaria) => {
 
         })
     });
+//-----------------------------------------------------------------------------------------------
+
+
 }
 
 
