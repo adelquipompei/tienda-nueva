@@ -2,10 +2,14 @@
 // Recuperar el carrito del localStorage
 let tbody = document.createElement('tbody');
 let table = document.querySelector('table')
+let total = document.querySelector('#total');
 
-    
+
+
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
 if (carrito.length > 0) {
+    
     let changuito = document.getElementById('changuito');
     let total = document.getElementById('total');
     let acum = 0;
@@ -27,6 +31,11 @@ if (carrito.length > 0) {
                     style: 'currency',
                     currency: 'ARS'
                 });
+}else{
+    
+    let sendCarro = document.querySelector('#sendCarro');
+        total.textContent = 'Tu carrito está vacío ☹️'
+        sendCarro.classList.add('d-none')
 }
 
 let tablaCarrito = document.querySelector('.tabla-container')
@@ -42,7 +51,7 @@ let crearCaja = (indumentaria) => {
         let cajaProducto = document.createElement('div');
         let imagenProducto = document.createElement('img');
         let addCarrito = document.createElement('button');
-        addCarrito.classList = 'btn btn-primary mb-3'
+        addCarrito.classList = 'btn btn-primary mb-3 btn-carrito'
         let precio = document.createElement('p');
         precio.classList = 'mb-2'
         let changuito = document.getElementById('changuito')
@@ -66,6 +75,7 @@ let crearCaja = (indumentaria) => {
       
         addCarrito.addEventListener('click', () => {
             tablaCarrito.classList.remove('d-none')
+            sendCarro.classList.remove('d-none')
             carrito.push(productos)
             changuito.textContent = carrito.length
             let tableRow = document.createElement('tr')
@@ -74,8 +84,8 @@ let crearCaja = (indumentaria) => {
             tbody.appendChild(tableRow)
             tableRow.append(td, td2)
             localStorage.setItem('carrito', JSON.stringify(carrito));
-            let total = document.getElementById('total')
             let acum = 0
+           
             carrito.forEach(producto => {
                 td.textContent = producto.nombre
                 td2.textContent = producto.precio.toLocaleString('es-AR', {

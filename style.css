@@ -97,7 +97,7 @@ nav{
     border: none;
     color: #fff;
     cursor: pointer;
-    background-color: #0d6efd;
+    /*background-color: #0d6efd;*/
     transition: all 0.2s ease;
   }
   
@@ -184,10 +184,12 @@ nav{
       background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
     }
   }
-
-  .button:hover{
-    background-color: #0b5ed7;
+  button:hover{
+    background-image: linear-gradient(144deg,#af40ff9c, #0b5dd7 50%,#00DDEB);
   }
+    
+    
+  
 
 
 
@@ -205,54 +207,42 @@ nav{
 
 
 
-  .animated-button {
-    position: relative;
-    display: inline-block;
-    padding: 16px 32px;
-    border: none;
-    background-color: #2196F3;
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
+  button {
+    align-items: center;
+    background-image: linear-gradient(144deg,#af40ff9c, #0d6efd 50%,#00DDEB);
+    border: 0;
+    
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px; /*efecto de sombra de boton*/
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
     cursor: pointer;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+    
+   }
+
+   .btn-carrito{
+    border: none!important;
+    transition: .3s;
+    padding: 3px;
+    font-size: 15px!important;
+   }
+   
+  .bg-tienda{
+    background-image: linear-gradient(144deg,#af40ff9c, #0b5dd7 50%,#00DDEB);
   }
-  
-  .animated-button:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background-color: #fff;
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+
+  #total{
+    margin: 0;
   }
-  
-  .animated-button span {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .animated-button:hover {
-    color: #2196F3;
-    background-color: #fff;
-    box-shadow: 0 0 20px hsla(263, 77%, 31%, 0);
-  }
-  
-  .animated-button:active {
-    scale: 0.9;
-  }
-  
-  .animated-button:hover:before {
-    transform: translate(-50%, -50%) rotate(45deg);
-    opacity: 1;
-  }
-  
-  
-  
