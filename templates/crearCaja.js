@@ -62,4 +62,5 @@ let crearCaja = (indumentaria) => {
 }
 
 
+
 export { carrito, table, tbody, crearCaja }
