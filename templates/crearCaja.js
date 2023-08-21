@@ -42,7 +42,7 @@ let crearCaja = (indumentaria) => {
             tbody.appendChild(tableRow)
             tableRow.append(td, td2)
 
-            console.log(carrito)
+            
             let total = document.getElementById('total')
             let acum = 0
             carrito.forEach(producto => {
