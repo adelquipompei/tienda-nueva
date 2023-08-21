@@ -35,8 +35,16 @@ export let indumentaria = [
         nombre: 'Campera',
         img: 'img/campera.jpg',
         precio: 66546
-
-    }
+        
+    },
+    {
+        id: 6,
+        nombre: 'krypton',
+        img: 'img/krypton.jpg',
+        precio: 155546
+        
+    },
+   
 
 ]
 

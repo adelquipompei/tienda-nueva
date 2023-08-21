@@ -29,6 +29,12 @@ if (carrito.length > 0) {
                 });
 }
 
+let tablaCarrito = document.querySelector('.tabla-container')
+let botonCarro = document.getElementById('boton-carro')
+botonCarro.addEventListener('click', () => {
+    tablaCarrito.classList.toggle('d-none')
+})
+
 let crearCaja = (indumentaria) => {
     table.appendChild(tbody)
     indumentaria.forEach(productos => {
@@ -38,14 +44,14 @@ let crearCaja = (indumentaria) => {
         let addCarrito = document.createElement('button');
         addCarrito.classList = 'btn btn-primary mb-3'
         let precio = document.createElement('p');
-        precio.classList = 'my-2'
+        precio.classList = 'mb-2'
         let changuito = document.getElementById('changuito')
 
         imagenProducto.setAttribute('src', productos.img)
         addCarrito.textContent = 'Agregar al carrito'
         cajaProducto.classList = 'productos shadow'
         let titulo = document.createElement('h3');
-        titulo.classList = 'my-2'
+        titulo.classList = 'my-0'
         titulo.textContent = productos.nombre
         precio.textContent = productos.precio.toLocaleString('es-AR', {
             style: 'currency',
@@ -54,14 +60,10 @@ let crearCaja = (indumentaria) => {
 
 
         container.appendChild(cajaProducto)
-        cajaProducto.append(titulo, imagenProducto, precio, addCarrito)
+        cajaProducto.append(imagenProducto,titulo, precio, addCarrito)
 
 
-        let botonCarro = document.getElementById('boton-carro')
-        botonCarro.addEventListener('click', () => {
-            tablaCarrito.classList.toggle('d-none')
-        })
-        let tablaCarrito = document.querySelector('.tabla-container')
+      
         addCarrito.addEventListener('click', () => {
             tablaCarrito.classList.remove('d-none')
             carrito.push(productos)

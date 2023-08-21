@@ -7,7 +7,7 @@ body{
 .productos{
     margin-top: 5%;
     background: #fff;
-    width: 200px;
+    width: 300px;
     height: auto;
     border-radius: 10px;
     display: flex;
@@ -17,8 +17,8 @@ body{
 }
 
 .productos > img {
-    width: 100px;
-    height: 112px;
+    width: 100%;
+   
 }
 
 #container{
