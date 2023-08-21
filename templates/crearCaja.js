@@ -1,7 +1,27 @@
 
-let carrito = []
+// Recuperar el carrito del localStorage
+let tbody = document.createElement('tbody');
 let table = document.querySelector('table')
-let tbody = document.createElement('tbody')
+
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+if (carrito.length > 0) {
+    let changuito = document.getElementById('changuito');
+    let total = document.getElementById('total');
+    let acum = 0;
+    carrito.forEach(producto => {
+        let tableRow = document.createElement('tr');
+        tbody.appendChild(tableRow);
+        let td = document.createElement('td');
+        let td2 = document.createElement('td');
+        tableRow.append(td, td2);
+        td.textContent = producto.nombre;
+        td2.textContent = '$' + producto.precio.toFixed(2);
+        acum += producto.precio;
+    });
+    changuito.textContent = carrito.length;
+    total.textContent = 'Total: $' + acum.toFixed(2);
+}
+
 let crearCaja = (indumentaria) => {
     table.appendChild(tbody)
     indumentaria.forEach(productos => {
@@ -41,8 +61,7 @@ let crearCaja = (indumentaria) => {
             let td2 = document.createElement('td')
             tbody.appendChild(tableRow)
             tableRow.append(td, td2)
-
-            
+            localStorage.setItem('carrito', JSON.stringify(carrito));
             let total = document.getElementById('total')
             let acum = 0
             carrito.forEach(producto => {
@@ -50,13 +69,22 @@ let crearCaja = (indumentaria) => {
                 td2.textContent = '$' + producto.precio
                 acum += producto.precio
                 total.textContent = 'Total: $' + acum
-
-
-
-
-
-
             });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         })
     });
 }
@@ -64,3 +92,15 @@ let crearCaja = (indumentaria) => {
 
 
 export { carrito, table, tbody, crearCaja }
+
+
+
+
+
+
+
+
+
+
+
+
