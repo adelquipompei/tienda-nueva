@@ -3,6 +3,7 @@
 let tbody = document.createElement('tbody');
 let table = document.querySelector('table')
 
+    
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 if (carrito.length > 0) {
     let changuito = document.getElementById('changuito');
@@ -15,11 +16,17 @@ if (carrito.length > 0) {
         let td2 = document.createElement('td');
         tableRow.append(td, td2);
         td.textContent = producto.nombre;
-        td2.textContent = '$' + producto.precio.toFixed(2);
+        td2.textContent = producto.precio.toLocaleString('es-AR', {
+                    style: 'currency',
+                    currency: 'ARS'
+                });
         acum += producto.precio;
     });
     changuito.textContent = carrito.length;
-    total.textContent = 'Total: $' + acum.toFixed(2);
+    total.textContent = 'Total:  ' + acum.toLocaleString('es-AR', {
+                    style: 'currency',
+                    currency: 'ARS'
+                });
 }
 
 let crearCaja = (indumentaria) => {
@@ -40,7 +47,10 @@ let crearCaja = (indumentaria) => {
         let titulo = document.createElement('h3');
         titulo.classList = 'my-2'
         titulo.textContent = productos.nombre
-        precio.textContent = '$' + productos.precio
+        precio.textContent = productos.precio.toLocaleString('es-AR', {
+            style: 'currency',
+            currency: 'ARS'
+        });
 
 
         container.appendChild(cajaProducto)
@@ -66,24 +76,16 @@ let crearCaja = (indumentaria) => {
             let acum = 0
             carrito.forEach(producto => {
                 td.textContent = producto.nombre
-                td2.textContent = '$' + producto.precio
+                td2.textContent = producto.precio.toLocaleString('es-AR', {
+                    style: 'currency',
+                    currency: 'ARS'
+                });
                 acum += producto.precio
-                total.textContent = 'Total: $' + acum
+                total.textContent = 'Total: ' + acum.toLocaleString('es-AR', {
+                    style: 'currency',
+                    currency: 'ARS'
+                });
             });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         })
     });
@@ -92,6 +94,20 @@ let crearCaja = (indumentaria) => {
 
 
 export { carrito, table, tbody, crearCaja }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
