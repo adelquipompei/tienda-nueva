@@ -1,32 +1,23 @@
 import { svgDelete, hoverDelete } from "./hoverDelete.js";
-import { indumentaria } from "./indumentaria.js";
-// Recuperar el carrito del localStorage
+
+
+
 let tbody = document.createElement('tbody');
 let table = document.querySelector('table')
 let total = document.querySelector('#total');
 let carroVacio = document.querySelector('.icon-tabler-shopping-cart-off')
 let carroLleno = document.querySelector('.icon-tabler-shopping-cart')
-
-
+let changuito = document.getElementById('changuito');
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+changuito.textContent = carrito.length;
+
 carroLleno.classList.toggle('d-none', carrito.length === 0);
 carroVacio.classList.toggle('d-none', carrito.length > 0);
-
 if (carrito.length > 0) {
-    
 
 
-
-
-
-
-
-
-    
-    let changuito = document.getElementById('changuito');
-    let total = document.getElementById('total');
-    let acum = 0;
+    let acum1 = 0;
     carrito.forEach(producto => {
         let tableRow = document.createElement('tr');
         tbody.appendChild(tableRow);
@@ -35,40 +26,23 @@ if (carrito.length > 0) {
         let td3 = document.createElement('td');
         tableRow.append(td, td2, td3);
         td.textContent = producto.nombre;
-        td2.textContent = producto.precio.toLocaleString('es-AR', {
-            style: 'currency',
-            currency: 'ARS'
-        });
-        
-
-        
-        td3.classList = 'btn-delete'
-
-        td3.innerHTML = ' '
+        td2.textContent = producto.precio.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+        acum1 += producto.precio;
+        changuito.textContent = carrito.length;
+        total.textContent = 'Total:  ' + acum1.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
         tableRow.addEventListener('mouseenter', () => {
-
             td3.innerHTML = svgDelete
             tableRow.addEventListener('mouseleave', () => {
                 td3.innerHTML = '  '
             })
         })
-
-
-
-        acum += producto.precio;
-    });
-    changuito.textContent = carrito.length;
-    total.textContent = 'Total:  ' + acum.toLocaleString('es-AR', {
-        style: 'currency',
-        currency: 'ARS'
+        hoverDelete(tableRow, td3, carrito, 0, changuito, total)
     });
 } else {
-
     let sendCarro = document.querySelector('#sendCarro');
     total.textContent = 'Tu carrito está vacío ☹️'
     sendCarro.classList.add('d-none')
 }
-
 let tablaCarrito = document.querySelector('.tabla-container')
 let botonCarro = document.getElementById('boton-carro')
 botonCarro.addEventListener('click', () => {
@@ -85,7 +59,7 @@ let crearCaja = (indumentaria) => {
         addCarrito.classList = 'btn btn-primary mb-3 btn-carrito'
         let precio = document.createElement('p');
         precio.classList = 'mb-2'
-        let changuito = document.getElementById('changuito')
+
         imagenProducto.setAttribute('src', productos.img)
         addCarrito.textContent = 'Agregar al carrito'
         cajaProducto.classList = 'productos shadow'
@@ -98,11 +72,6 @@ let crearCaja = (indumentaria) => {
         });
         container.appendChild(cajaProducto)
         cajaProducto.append(imagenProducto, titulo, precio, addCarrito)
-
-
-
-
-
         // Agregar al carrito--------------------------------------------------------------- 
         addCarrito.addEventListener('click', () => {
             tablaCarrito.classList.remove('d-none')
@@ -118,10 +87,10 @@ let crearCaja = (indumentaria) => {
             tbody.appendChild(tableRow)
             tableRow.append(td, td2, td3)
             localStorage.setItem('carrito', JSON.stringify(carrito));
-            let acum = 0
-          
+
             td3.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="20" height="20" viewBox="0 0 20 20" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  '
-            hoverDelete(tableRow,td3,carrito)
+            hoverDelete(tableRow, td3, carrito, 0, changuito, total)
+            let acum = 0
             carrito.forEach(producto => {
                 td.textContent = producto.nombre
                 td2.textContent = producto.precio.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
@@ -131,10 +100,31 @@ let crearCaja = (indumentaria) => {
 
         })
     });
-
-            
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
