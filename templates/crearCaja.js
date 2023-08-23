@@ -64,7 +64,7 @@ let crearCaja = (indumentaria) => {
         addCarrito.textContent = 'Agregar al carrito'
         cajaProducto.classList = 'productos shadow'
         let titulo = document.createElement('h3');
-        titulo.classList = 'my-0'
+        titulo.classList = 'my-0 text-center'
         titulo.textContent = productos.nombre
         precio.textContent = productos.precio.toLocaleString('es-AR', {
             style: 'currency',
