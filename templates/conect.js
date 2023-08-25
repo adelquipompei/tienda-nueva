@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors'); // Importa cors
-const bodyParser = require('body-parser');
 const multer = require('multer'); // Importar multer
 const dataBase = require('./database');
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true })); // Middleware para manejar datos del formulario
+
+
 
 // Configura Multer-----> para guardar las imagenes
 const storage = multer.diskStorage({

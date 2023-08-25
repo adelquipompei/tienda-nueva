@@ -65,7 +65,8 @@ let crearCaja = (indumentaria) => {
         cajaProducto.classList = 'productos shadow'
         let titulo = document.createElement('h3');
         titulo.classList = 'my-2 text-center'
-        titulo.textContent = productos.titulo
+        titulo.textContent = productos.titulo.charAt(0).toUpperCase() + productos.titulo.slice(1);
+        
         precio.textContent = productos.precio.toLocaleString('es-AR', {
             style: 'currency',
             currency: 'ARS'
@@ -92,7 +93,7 @@ let crearCaja = (indumentaria) => {
             hoverDelete(tableRow, td3, carrito, 0, changuito, total)
             let acum = 0
             carrito.forEach(producto => {
-                td.textContent = producto.titulo
+                td.textContent = productos.titulo.charAt(0).toUpperCase() + productos.titulo.slice(1);
                 td2.textContent = producto.precio.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
                 acum += producto.precio
                 total.textContent = 'Total: ' + acum.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
