@@ -98,7 +98,7 @@ mongoose.connect(dataBase.mongooseConect, {
     //--------------------------------------------------------------------------------------------------------------
 
     // Importa el modelo Indumentaria
-    const Indumentaria = mongoose.model('Indumentaria');
+   // const Indumentaria = mongoose.model('Indumentaria');
 
 
     
@@ -109,9 +109,6 @@ mongoose.connect(dataBase.mongooseConect, {
 }).catch((error) => {
     console.error('Error de conexión a la base de datos:', error);
 });
-
-
-
 
 
 
