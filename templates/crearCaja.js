@@ -25,7 +25,7 @@ if (carrito.length > 0) {
         let td2 = document.createElement('td');
         let td3 = document.createElement('td');
         tableRow.append(td, td2, td3);
-        td.textContent = producto.nombre;
+        td.textContent = producto.titulo;
         td2.textContent = producto.precio.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
         acum1 += producto.precio;
         changuito.textContent = carrito.length;
@@ -64,8 +64,8 @@ let crearCaja = (indumentaria) => {
         addCarrito.textContent = 'Agregar al carrito'
         cajaProducto.classList = 'productos shadow'
         let titulo = document.createElement('h3');
-        titulo.classList = 'my-0 text-center'
-        titulo.textContent = productos.nombre
+        titulo.classList = 'my-2 text-center'
+        titulo.textContent = productos.titulo
         precio.textContent = productos.precio.toLocaleString('es-AR', {
             style: 'currency',
             currency: 'ARS'
@@ -92,44 +92,44 @@ let crearCaja = (indumentaria) => {
             hoverDelete(tableRow, td3, carrito, 0, changuito, total)
             let acum = 0
             carrito.forEach(producto => {
-                td.textContent = producto.nombre
+                td.textContent = producto.titulo
                 td2.textContent = producto.precio.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
                 acum += producto.precio
                 total.textContent = 'Total: ' + acum.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
             });
-
+            
         })
     });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export { carrito, table, tbody, crearCaja }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
